@@ -1,0 +1,90 @@
+﻿<Window x:Class="planirvshik.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:planirvshik"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Button x:Name="RandomButton" Style="{StaticResource MaterialDesignFloatingActionButton}"
+        Command="{Binding RandomCommand}"
+        ToolTip="Random"
+        VerticalAlignment="Top"
+        HorizontalAlignment="Left" Grid.Column="4" Margin="112,27,0,0" Grid.Row="4" Height="42" Width="43" Grid.ColumnSpan="2" Click="RandomButton_Click_3">
+            <materialDesign:PackIcon x:Name="Random" Kind="Shuffle"
+                             Height="24"
+                             Width="24" />
+        </Button>
+
+        <Button Style="{StaticResource MaterialDesignFloatingActionButton}"
+        Command="{Binding RepeatCommand}"
+        ToolTip="Repeat"
+        VerticalAlignment="Top"
+        HorizontalAlignment="Left" Grid.Column="4" Margin="52,27,0,0" Grid.Row="4" Height="42" Width="43" Click="RepeatButton_Click_3">
+            <materialDesign:PackIcon x:Name="Repeat" Kind="Repeat"
+                             Height="24"
+                             Width="24" />
+        </Button>
+
+        <Slider x:Name="MusicSlider"
+  Minimum="0"
+  Maximum="50"
+  Value="35" Grid.Column="1" Grid.ColumnSpan="4" Margin="106,34,107,4" Grid.Row="4" ValueChanged="MusicSlider_ValueChanged" />
+        <Slider x:Name="VolumeSlider"
+  Orientation="Vertical"
+  Minimum="0"
+  Maximum="{Binding DiscreteVertical.Maximum}"
+  Value="70000"
+  Style="{StaticResource MaterialDesignDiscreteSlider}"
+  TickFrequency="{Binding DiscreteVertical.TickFrequency}"
+  TickPlacement="BottomRight" Grid.Column="5" Margin="60,17,42,22" Grid.RowSpan="2" Grid.Row="3" />
+        <Button x:Name="RightButton1" Style="{StaticResource MaterialDesignIconButton}"
+        Command="{Binding NextCommand}" Margin="41,20,45,19" Grid.Row="4" Grid.Column="1" Click="Button_Click_1">
+            <materialDesign:PackIcon x:Name="RightButton2" Kind="ChevronRight"
+                             Height="40"
+                             Width="40" />
+        </Button>
+
+        <Button Style="{StaticResource MaterialDesignIconButton}"
+        Command="{Binding PreviousCommand}" Margin="44,20,41,19" Grid.Row="4" Click="Button_Click_2">
+            <materialDesign:PackIcon x:Name="LeftButton" Kind="ChevronLeft"
+                             Height="40"
+                             Width="40
+                                     " />
+        </Button>
+
+        <Button x:Name="PlayButton"
+  Style="{StaticResource MaterialDesignIconButton}"
+  ToolTip="MaterialDesignIconButton"
+  IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Margin="113,20,106,19" Grid.Row="4" Grid.ColumnSpan="2" Click="PlayButton_Click">
+            <materialDesign:PackIcon
+    Kind="Play" />
+
+        </Button>
+        <ListBox x:Name="AllSong" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.ColumnSpan="5" Margin="16,22,58,8" Grid.RowSpan="4" SelectionChanged="AllSong_SelectionChanged"/>
+        <Button x:Name="AddSongs" Grid.Column="4" Content="Добавить папку\файл" HorizontalAlignment="Left" Margin="78,30,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Click="AddSongs_Click"/>
+        <Button Grid.Column="5" Content="Удалить" HorizontalAlignment="Left" Margin="20,37,0,0" Grid.Row="1" VerticalAlignment="Top" Click="Button_Click"/>
+        <TextBox x:Name="mediaPlayerTimer" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="111,54,0,0" Grid.Row="4" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="60" TextChanged="TextBox_TextChanged"/>
+        <TextBox x:Name="songDuration" Grid.Column="3" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="104,53,0,0" Grid.Row="4" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="60" TextChanged="TextBox_TextChanged"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+
+        </Grid.ColumnDefinitions>
+    </Grid>
+</Window>
